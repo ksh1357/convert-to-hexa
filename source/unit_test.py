@@ -17,6 +17,14 @@ class TestDecimalToHex(unittest.TestCase):
         n = random.uniform(-1000000, 1000000)
         hex_str = dec_to_hex(n)
         self.assertEqual(hex_str, "%#x"%int(n))
+    def test_random_str_int(self):
+        n = random.randint(-1000000, 1000000)
+        hex_str = dec_to_hex(str(n))
+        self.assertEqual(hex_str, "%#x"%int(n))
+    def test_random_str_float(self):
+        n = random.uniform(-1000000, 1000000)
+        hex_str = dec_to_hex(str(n))
+        self.assertEqual(hex_str, "%#x"%int(n))
     def test_invalid_input(self):
         with self.assertRaises(ValueError):
             dec_to_hex("abc")
