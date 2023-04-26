@@ -9,13 +9,10 @@ def dec_to_hex(decimal):
     answer = ""
     hex_digits = "0123456789abcdef"
     hex_str = ""
-    # float인 경우 int로 형 변환
-    if isinstance(decimal, (int, float)):
-        decimal = int(decimal)
-    elif isinstance(decimal, str) and decimal.isdigit():
-        decimal = int(decimal)
-    # input type이 올바르지 않은 경우
-    else:
+    try:
+        # float_str인 경우 고려
+        decimal = int(float(decimal))
+    except Exception as e:
         raise ValueError("Invalid decimal number")
     # 음수인 경우
     if decimal < 0:
